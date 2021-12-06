@@ -65,6 +65,18 @@ class RadioTest {
     }
 
     @Test
+    public void shouldSwitchRadioStation8to9() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(8);
+
+        radio.increaseStation();
+
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetRadioStationInvalidValueMin() {
         Radio radio = new Radio();
         radio.setCurrentStation(-25);

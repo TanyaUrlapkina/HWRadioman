@@ -62,7 +62,7 @@ public class Radio {
         if (currentStation < 9) {
             currentStation = currentStation + 1;
         }
-        if (currentStation >= 9) {
+        else {
             currentStation = 0;
         }
     }
