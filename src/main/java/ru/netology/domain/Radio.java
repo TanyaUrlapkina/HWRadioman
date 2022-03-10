@@ -1,55 +1,60 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int currentStation;
-    private int currentVolume;
+    private int numberStations = 9;
+    private int currentStation = 8;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume = 35;
+
+    public Radio(int numberStations) {
+        this.numberStations = numberStations;
+    }
+
+    public Radio() {
+    }
 
     public int setCurrentStation(int currentStation) {
 
-        if (currentStation > 9) {
+        if (currentStation > (numberStations - 1)) {
             currentStation = 0;
         }
-
-        if (currentStation < 0) {
-            currentStation = 0;
-        }
-
         if (currentStation > 0) {
             this.currentStation = currentStation;
         }
 
+
         this.currentStation = currentStation;
+
 
         return currentStation;
     }
 
     public int getCurrentStation() {
-
         return currentStation;
     }
 
 
     public void setCurrentVolume(int currentVolume) {
 
-        if (currentVolume > 10) {
-            return;
-        }
-        if (currentVolume < 0) {
+        if (currentVolume > 100) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
     public int getCurrentVolume() {
-
         return currentVolume;
     }
 
-
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         }
+        if (currentVolume == 100) {
+            currentVolume = currentVolume;
+        }
+
     }
 
     public void decreaseVolume() {
@@ -63,22 +68,26 @@ public class Radio {
 
     public void increaseStation() {
 
-        if (currentStation < 9) {
+
+        if (currentStation < (numberStations - 1)) {
             currentStation = currentStation + 1;
         }
-        else {
+        if (currentStation == (numberStations - 1)) {
             currentStation = 0;
+            return;
         }
+
+
+        this.currentStation = currentStation;
+
     }
 
     public void decreaseStation() {
-
         if (currentStation > 0) {
             currentStation = currentStation - 1;
         }
-        else {
-            currentStation = 0;
-            currentStation = 9;
+        if (currentStation == 0) {
+            currentStation = numberStations - 1;
         }
     }
 }
